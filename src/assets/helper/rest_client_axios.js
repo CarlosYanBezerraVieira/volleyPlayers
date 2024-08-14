@@ -4,8 +4,8 @@ const restClient = axios.create({
   baseURL: 'https://beach-volleyball-devs.p.rapidapi.com/',
   timeout: 1000,
   headers: {
-    'x-rapidapi-key': process.env.RAPIDAPI_KEY,
-    'x-rapidapi-host': process.env.RAPIDAPI_HOST
+    'x-rapidapi-key': import.meta.env.REACT_APP_RAPIDAPI_KEY,
+    'x-rapidapi-host': import.meta.env.REACT_APP_RAPIDAPI_HOST
   }
 });
 
