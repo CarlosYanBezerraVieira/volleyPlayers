@@ -1,11 +1,9 @@
-
+import ListOfComponents from "./components/ListOdComponents"
 
 function App() {
   return (
     <>
-     
-      <h1>Front beginig</h1>
-     
+     <ListOfComponents/>
     </>
   )
 }
