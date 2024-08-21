@@ -1,0 +1,8 @@
+/* CSS para ListOfComponents */
+.list-of-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espaço entre os cards */
+    padding: 20px;
+}
