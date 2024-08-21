@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const restClient = axios.create({
-  baseURL: 'https://v3.football.api-sports.io',
+  baseURL: 'https://v1.volleyball.api-sports.io/',
   timeout: 1000,
   headers: {
     'x-rapidapi-key': import.meta.env.VITE_RAPIDAPI_KEY,
