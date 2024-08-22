@@ -9,10 +9,10 @@ function App() {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true); // Estado para controlar o carregamento
 
-  async function getData() {
+  async function getData(params) {
     setLoading(true); // Inicia o carregamento
     try {
-      const data = await volleyService.getTeamsOfVolley();
+      const data = await volleyService.getTeamsOfVolley(params);
       console.log(data.response);
       let value = data.response.map(team => {
         return { ...team, isFavorited: false };
@@ -51,15 +51,19 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (
-      filterTeams(false).length === 0 &&
-      filterTeams(true).length === 0 &&
-      search !== ""
-    ) {
-      getData();
-      console.log('Nenhum resultado encontrado, fazendo requisição...');
+    const noTeamsFound = filterTeams(false).length === 0 && filterTeams(true).length === 0;
+  
+    if (noTeamsFound) {
+      if (search.length > 2) {
+        getData({ search });
+        console.log('Nenhum resultado encontrado, fazendo requisição com pesquisa...');
+      } else if (search.length > 2 && noTeamsFound) {
+        getData();
+        console.log('Nenhum resultado encontrado, carregando dados iniciais...');
+      }
     }
   }, [search]);
+  
 
   return (
     <>
